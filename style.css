@@ -1,0 +1,403 @@
+@charset "UTF-8";
+
+/* Fontes que estão na pasta assets/fonts */
+/* .woff2 é um formato de fonte compactado para a web, igual ao .ttf/.otf, só que menor */
+/* font-display: swap mostra o texto com a fonte reserva até a fonte carregar */
+@font-face {
+    font-family: 'DM Sans';
+    font-weight: 300;
+    font-display: swap;
+    src: url('assets/fonts/dm-sans-v16-latin-300.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'DM Sans';
+    font-weight: 500;
+    font-display: swap;
+    src: url('assets/fonts/dm-sans-v16-latin-500.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'DM Sans';
+    font-weight: 600;
+    font-display: swap;
+    src: url('assets/fonts/dm-sans-v16-latin-600.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'DM Sans';
+    font-style: italic;
+    font-weight: 600;
+    font-display: swap;
+    src: url('assets/fonts/dm-sans-v16-latin-600italic.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'DM Sans';
+    font-weight: 700;
+    font-display: swap;
+    src: url('assets/fonts/dm-sans-v16-latin-700.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Bricolage Grotesque';
+    font-weight: 700;
+    font-display: swap;
+    src: url('assets/fonts/bricolage-grotesque-v8-latin-700.woff2') format('woff2');
+}
+
+/* ===== Geral ===== */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+body {
+    background-color: rgb(3, 1, 45);
+    color: white;
+    font-family: 'DM Sans', Arial, Helvetica, sans-serif;
+    font-weight: 500;
+    line-height: 1.2;
+    padding-bottom: 80px;
+}
+
+img {
+    max-width: 100%;
+}
+
+input, button, select {
+    font: inherit;
+    width: 100%;
+    border: none;
+}
+
+/* Cabeçalho e painel ocupam a mesma largura, centralizados */
+header, main {
+    width: calc(100% - 32px);
+    margin: 0 auto;
+}
+
+/* Bloco escuro com borda (condições e dias) */
+.bloco {
+    background-color: rgb(39, 37, 65);
+    border: 1px solid rgb(61, 59, 94);
+    border-radius: 12px;
+}
+
+.titulo-secao {
+    font-size: 20px;
+}
+
+/* ===== Cabeçalho com a busca ===== */
+
+header {
+    display: grid;
+    justify-items: center;
+    padding-top: 48px;
+    margin-bottom: 32px;
+}
+
+h1 {
+    font-family: 'Bricolage Grotesque', Arial, Helvetica, sans-serif;
+    font-size: 52px;
+    text-align: center;
+    margin-bottom: 48px;
+    max-width: 520px;
+}
+
+#busca {
+    display: grid;
+    gap: 12px 16px;
+    width: 100%;
+    max-width: 656px;
+}
+
+#txtBusca {
+    background: rgb(39, 37, 65) url('assets/images/icon-search.svg') no-repeat 24px center;
+    color: rgb(213, 212, 217);
+    font-size: 20px;
+    padding: 16px 20px 16px 60px;
+    border-radius: 12px;
+}
+
+#txtBusca:focus {
+    outline: 2px solid rgb(213, 212, 217);
+}
+
+#btnBuscar {
+    background-color: rgb(68, 85, 218);
+    color: white;
+    font-size: 20px;
+    padding: 16px 24px;
+    border-radius: 12px;
+    transition: background-color 120ms ease-in-out;
+}
+
+#btnBuscar:hover {
+    background-color: rgb(45, 28, 156);
+    cursor: pointer;
+}
+
+/* ===== Painel: no celular as seções ficam uma embaixo da outra ===== */
+
+#painel {
+    display: grid;
+    gap: 32px;
+    /* grid-template-areas dá um nome para cada área do grid, como um desenho do layout */
+    /* cada linha entre aspas é uma linha do grid e cada nome ocupa uma célula */
+    grid-template-areas:
+        'atual'
+        'diaria'
+        'por-hora';
+}
+
+/* ===== Tempo atual ===== */
+
+#atual {
+    /* grid-area: atual coloca o elemento na área chamada 'atual', */
+    /* semelhante a usar grid-area: 1 / 1 / 2 / -1, mas pelo nome em vez dos números */
+    grid-area: atual;
+}
+
+#cartao-atual {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 20px;
+    padding: 40px 24px;
+    background: rgb(45, 28, 156) url('assets/images/bg-today-small.svg') no-repeat center bottom;
+    background-size: cover;
+    border-radius: 20px;
+    /* overflow: clip corta o que passar da borda, semelhante ao overflow: hidden */
+    overflow: clip;
+}
+
+#local {
+    text-align: center;
+}
+
+#cidade {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+#data {
+    font-size: 18px;
+    color: rgb(213, 212, 217);
+}
+
+#info-atual {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+#icone-atual {
+    width: 120px;
+    height: auto;
+}
+
+#temperatura-atual {
+    font-size: 96px;
+    font-weight: 600;
+    font-style: italic;
+    line-height: 1;
+    letter-spacing: -2%;
+}
+
+#condicoes {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+
+.condicao {
+    padding: 20px;
+}
+
+.condicao-titulo {
+    font-size: 18px;
+    color: rgb(213, 212, 217);
+    margin-bottom: 24px;
+}
+
+.condicao-valor {
+    font-size: 32px;
+    font-weight: 300;
+}
+
+/* ===== Previsão diária ===== */
+
+#diaria {
+    grid-area: diaria;
+}
+
+#diaria .titulo-secao {
+    margin-bottom: 20px;
+}
+
+#dias {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    min-height: 166px;
+}
+
+.dia {
+    display: grid;
+    justify-items: center;
+    gap: 16px;
+    padding: 16px 10px;
+    text-align: center;
+}
+
+.dia-nome {
+    font-size: 18px;
+}
+
+.dia-icone {
+    width: 60px;
+    height: auto;
+}
+
+/* Máxima à esquerda e mínima à direita */
+.dia-temps {
+    /* justify-self alinha só este item na horizontal, semelhante ao justify-items, */
+    /* que alinha todos os itens do grid de uma vez */
+    justify-self: stretch;
+    display: flex;
+    justify-content: space-between;
+    font-size: 16px;
+}
+
+.dia-min {
+    color: rgb(213, 212, 217);
+}
+
+/* ===== Previsão por hora ===== */
+
+#por-hora {
+    grid-area: por-hora;
+    position: relative;
+}
+
+#por-hora-conteudo {
+    background-color: rgb(39, 37, 65);
+    border-radius: 20px;
+    padding: 20px 16px;
+    max-height: 60vh;
+    /* overflow-y: scroll cria a barra de rolagem só na vertical (o overflow-x faz o mesmo na horizontal) */
+    overflow-y: scroll;
+}
+
+#por-hora-topo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+    margin-bottom: 16px;
+}
+
+#por-hora .titulo-secao {
+    font-weight: 600;
+}
+
+#selDia {
+    background-color: rgb(49, 47, 75);
+    color: white;
+    font-size: 14px;
+    width: auto;
+    padding: 8px 16px;
+    border-radius: 8px;
+}
+
+#horas {
+    display: grid;
+    gap: 16px;
+}
+
+/* Ícone, hora e temperatura lado a lado */
+.hora {
+    display: grid;
+    grid-template-columns: auto auto 1fr;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px 10px 12px;
+    min-height: 60px;
+    background-color: rgb(49, 47, 75);
+    border: 1px solid rgb(61, 59, 94);
+    border-radius: 8px;
+}
+
+.hora-icone {
+    width: 40px;
+    height: auto;
+}
+
+.hora-texto {
+    font-size: 20px;
+}
+
+.hora-temp {
+    font-size: 16px;
+    justify-self: end;
+}
+
+/* ===== Telas a partir de 700px (tablet) ===== */
+
+@media (min-width: 700px) {
+    header, main {
+        /* min() usa o menor dos valores: a largura da tela menos 48px, mas no máximo 1216px */
+        width: min(calc(100% - 48px), 1216px);
+    }
+
+    #busca {
+        grid-template-columns: 1fr auto;
+    }
+
+    #cartao-atual {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        background-image: url('assets/images/bg-today-large.svg');
+        padding-top: 83px;
+        padding-bottom: 83px;
+    }
+
+    #condicoes {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    #dias {
+        grid-template-columns: repeat(7, 1fr);
+    }
+
+    #selDia {
+        font-size: 16px;
+    }
+}
+
+/* ===== Telas a partir de 1000px (computador) ===== */
+
+@media (min-width: 1000px) {
+    h1 {
+        max-width: none;
+    }
+
+    /* Tempo atual e diária à esquerda, previsão por hora à direita */
+    #painel {
+        gap: 48px 32px;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-areas:
+            'atual atual por-hora'
+            'diaria diaria por-hora';
+    }
+
+    #por-hora-conteudo {
+        position: absolute;
+        height: 100%;
+        max-height: none;
+    }
+}

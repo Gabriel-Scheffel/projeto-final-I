@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Previsão do Tempo</title>
+    <link rel="icon" type="image/png" href="assets/images/favicon-32x32.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Como está o céu hoje?</h1>
+
+        <div id="busca">
+            <input type="text" id="txtBusca" placeholder="Buscar um local...">
+            <button id="btnBuscar">Buscar</button>
+        </div>
+    </header>
+
+    <main id="painel">
+        <!-- Tempo atual -->
+        <section id="atual">
+            <div id="cartao-atual">
+                <div id="local">
+                    <div id="cidade">Porto Alegre, BR</div>
+                    <div id="data">terça-feira, 5 de ago. de 2025</div>
+                </div>
+                <div id="info-atual">
+                    <img id="icone-atual" src="assets/images/icon-sunny.webp" alt="" width="320" height="320">
+                    <div id="temperatura-atual"><span id="temperatura">20</span>&deg;</div>
+                </div>
+            </div>
+
+            <div id="condicoes">
+                <div class="bloco condicao">
+                    <p class="condicao-titulo">Sensação térmica</p>
+                    <p class="condicao-valor"><span id="sensacao"></span>&deg;</p>
+                </div>
+                <div class="bloco condicao">
+                    <p class="condicao-titulo">Umidade</p>
+                    <p class="condicao-valor"><span id="umidade"></span>%</p>
+                </div>
+                <div class="bloco condicao">
+                    <p class="condicao-titulo">Vento</p>
+                    <p class="condicao-valor" id="vento"></p>
+                </div>
+                <div class="bloco condicao">
+                    <p class="condicao-titulo">Precipitação</p>
+                    <p class="condicao-valor" id="precipitacao"></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Previsão para os próximos 7 dias (os dias são criados pelo script) -->
+        <section id="diaria">
+            <h2 class="titulo-secao">Previsão diária</h2>
+            <div id="dias"></div>
+        </section>
+
+        <!-- Previsão de cada hora do dia escolhido (as horas são criadas pelo script) -->
+        <section id="por-hora">
+            <div id="por-hora-conteudo">
+                <div id="por-hora-topo">
+                    <h2 class="titulo-secao">Previsão por hora</h2>
+                    <select id="selDia"></select>
+                </div>
+                <div id="horas"></div>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
